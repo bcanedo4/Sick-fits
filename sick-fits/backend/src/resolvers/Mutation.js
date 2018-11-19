@@ -95,6 +95,15 @@ const Mutations = {
 
     // 5. Return the user
     return user;
+  },
+  async signout(parent, args, ctx, info) {
+    ctx.response.clearCookie('token');
+    return { message: 'Goodbye!' }; 
+
+    ctx.response.cookie('token', token, {
+      httpOnly: true, // cannot access token via javascript
+      maxAge: 1000 * 60 * 60 * 24 * 365, // 1 year cookie
+    });
   }
 };
 
