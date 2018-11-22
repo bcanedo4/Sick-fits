@@ -29,10 +29,10 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
   state = {
-    title: 'Cool Shoes',
-    description: 'I love those shoes',
-    image: 'dog.jpg',
-    largeImage: 'large-dog.jpg',
+    title: '',
+    description: '',
+    image: '',
+    largeImage: '',
     price: 1000
   };
   handleChange = e => {
@@ -53,7 +53,6 @@ class CreateItem extends Component {
       body: data
     });
     const file = await res.json();
-    console.log(file);
     this.setState({
       image: file.secure_url,
       largeImage: file.eager[0].secure_url
